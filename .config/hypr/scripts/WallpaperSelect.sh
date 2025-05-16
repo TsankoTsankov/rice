@@ -1,16 +1,13 @@
 #!/bin/bash
-# WallpaperSelect.sh - Rofi wallpaper picker: ONLY image previews, no text
-# Author: (TsankoTsankov, adapted for image-only Rofi menu)
+# Author: (TsankoTsankov, with thanks to JaKooLit)
 # Project: Personal dotfiles
 #
 # This script lets you select a wallpaper (image or video) using a rofi menu.
-# After you select a wallpaper, it applies it using swww or mpvpaper,
+# After you select a wallpaper, it applies it using swww (for images) or mpvpaper (video),
 # generates pywal colors (if an image), updates Waybar's colors.css, and reloads Waybar.
 #
 # Requirements: swww, mpvpaper, wal (pywal), rofi, jq, bc, magick, ffmpeg, notify-send
-
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-# This script for selecting wallpapers (SUPER W)
+# This script is bound to SUPER W (hyprland)
 
 # --- CONFIGURABLE PATHS ---
 terminal=kitty
@@ -21,42 +18,6 @@ iDIR="$HOME/.config/swaync/images"
 iDIRi="$HOME/.config/swaync/icons"
 colors_file="$HOME/.config/waybar/colors.css"
 last_wallpaper_file="/tmp/last_wallpaper_path"
-
-# Get currently set wallpaper (for pywal)
-#chosen=$(swww query | grep -oP '(?<=image: )(.*)' | head -n 1)
-
-# Generate pywal colors from current wallpaper
-#wal -i "$chosen" --backend haishoku
-#if [ $? -ne 0 ]; then
-#  notify-send "Pywal failed" "Could not generate colors with wal"
-#  exit 1
-#fi
-
-# Ensure pywal colors file exists
-#if [ ! -f ~/.cache/wal/colors ]; then
-#  notify-send "No wal colors" "File ~/.cache/wal/colors not found"
-#  exit 1
-#fi
-
-# Generate Waybar colors.css from pywal colors
-#cat > "$colors_file" <<EOF
-#@define-color base $(head -n 1 ~/.cache/wal/colors);
-#@define-color crust $(head -n 2 ~/.cache/wal/colors | tail -n 1);
-#@define-color text $(head -n 16 ~/.cache/wal/colors | tail -n 1);
-#@define-color red $(head -n 2 ~/.cache/wal/colors | tail -n 1);
-#@define-color green $(head -n 3 ~/.cache/wal/colors | tail -n 1);
-#@define-color yellow $(head -n 4 ~/.cache/wal/colors | tail -n 1);
-#@define-color blue $(head -n 5 ~/.cache/wal/colors | tail -n 1);
-#@define-color magenta $(head -n 6 ~/.cache/wal/colors | tail -n 1);
-#@define-color cyan $(head -n 7 ~/.cache/wal/colors | tail -n 1);
-#@define-color surface0 $(head -n 8 ~/.cache/wal/colors | tail -n 1);
-#@define-color overlay0 $(head -n 9 ~/.cache/wal/colors | tail -n 1);
-#@define-color peach $(head -n 10 ~/.cache/wal/colors | tail -n 1);
-#@define-color teal $(head -n 11 ~/.cache/wal/colors | tail -n 1);
-#@define-color sky $(head -n 12 ~/.cache/wal/colors | tail -n 1);
-#@define-color sapphire $(head -n 13 ~/.cache/wal/colors | tail -n 1);
-#@define-color lavender $(head -n 14 ~/.cache/wal/colors | tail -n 1);
-#EOF
 
 # Reload Waybar to apply new colors
 pkill -SIGUSR2 waybar
@@ -88,7 +49,7 @@ DURATION=1
 BEZIER=".43,1.19,1,.4"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
 
-# --- Helper: Kill wallpaper daemons ---
+# --- Kill wallpaper daemons ---
 kill_wallpaper_for_video() {
   swww kill 2>/dev/null
   pkill mpvpaper 2>/dev/null
@@ -101,21 +62,23 @@ kill_wallpaper_for_image() {
   pkill hyprpaper 2>/dev/null
 }
 
-# --- Menu Construction (JaKooLit style, minimal changes) ---
-menu() {
-  # Find all images and videos
-  mapfile -d '' PICS < <(find -L "${wallDIR}" -type f \(
-    -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o \
-    -iname "*.bmp" -o -iname "*.tiff" -o -iname "*.webp" -o \
-    -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -o -iname "*.webm" \) -print0)
-  RANDOM_PIC="${PICS[$((RANDOM % ${#PICS[@]}))]}"
-  RANDOM_PIC_NAME=". random"
+mapfile -d '' PICS < <(find -L "${wallDIR}" -type f \( \
+  -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o \
+  -iname "*.bmp" -o -iname "*.tiff" -o -iname "*.webp" -o \
+  -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -o -iname "*.webm" \) -print0)
 
-  # Print random option
+RANDOM_PIC="${PICS[$((RANDOM % ${#PICS[@]}))]}"
+RANDOM_PIC_NAME=". random"
+
+# Rofi command
+rofi_command="rofi -i -show -dmenu -config $rofi_theme -theme-str $rofi_override"
+
+# Sorting Wallpapers
+menu() {
+  IFS=$'\n' sorted_options=($(sort <<<"${PICS[*]}"))
+
   printf "%s\x00icon\x1f%s\n" "$RANDOM_PIC_NAME" "$RANDOM_PIC"
 
-  # Sort and print all wallpapers with previews
-  IFS=$'\n' sorted_options=($(sort <<<"${PICS[*]}"))
   for pic_path in "${sorted_options[@]}"; do
     pic_name=$(basename "$pic_path")
     if [[ "$pic_name" =~ \.gif$ ]]; then
@@ -137,6 +100,44 @@ menu() {
     fi
   done
 }
+
+
+# Find all images and videos
+#  mapfile -d '' PICS < <(find -L "${wallDIR}" -type f \(
+#    -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o \
+#    -iname "*.bmp" -o -iname "*.tiff" -o -iname "*.webp" -o \
+#    -iname "*.mp4" -o -iname "*.mkv" -o -iname "*.mov" -o -iname "*.webm" \) -print0)
+#  RANDOM_PIC="${PICS[$((RANDOM % ${#PICS[@]}))]}"
+#  RANDOM_PIC_NAME=". random"
+
+# --- Menu Construction (JaKooLit) ---
+#menu() {
+#  # Print random option
+#  printf "%s\x00icon\x1f%s\n" "$RANDOM_PIC_NAME" "$RANDOM_PIC"
+#
+#  # Sort and print all wallpapers with previews
+#  IFS=$'\n' sorted_options=($(sort <<<"${PICS[*]}"))
+#  for pic_path in "${sorted_options[@]}"; do
+#    pic_name=$(basename "$pic_path")
+#    if [[ "$pic_name" =~ \.gif$ ]]; then
+#      cache_gif_image="$HOME/.cache/gif_preview/${pic_name}.png"
+#      if [[ ! -f "$cache_gif_image" ]]; then
+#        mkdir -p "$HOME/.cache/gif_preview"
+#        magick "$pic_path[0]" -resize 1920x1080 "$cache_gif_image"
+#      fi
+#      printf "%s\x00icon\x1f%s\n" "$pic_name" "$cache_gif_image"
+#    elif [[ "$pic_name" =~ \.(mp4|mkv|mov|webm|MP4|MKV|MOV|WEBM)$ ]]; then
+#      cache_preview_image="$HOME/.cache/video_preview/${pic_name}.png"
+#      if [[ ! -f "$cache_preview_image" ]]; then
+#        mkdir -p "$HOME/.cache/video_preview"
+#        ffmpeg -v error -y -i "$pic_path" -ss 00:00:01.000 -vframes 1 "$cache_preview_image"
+#      fi
+#      printf "%s\x00icon\x1f%s\n" "$pic_name" "$cache_preview_image"
+#    else
+#      printf "%s\x00icon\x1f%s\n" "$(echo "$pic_name" | cut -d. -f1)" "$pic_path"
+#    fi
+#  done
+#}
 
 # --- Startup config update ---
 modify_startup_config() {
