@@ -1,0 +1,121 @@
+{
+    "layer": "top",
+    "position": "left",
+    "mode": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "width": 25,
+    "height": 0,
+    "margin": 0,
+    "modules-left": [
+	"group/info"
+    ],
+    "modules-center": ["group/spotify"],
+    "modules-right": ["group/logout"],
+
+    "group/info": {
+        "orientation": "inherit",
+        "drawer": { "transition-duration": 300, "transition-left-to-right": true },
+        "modules": [
+		"custom/arrow-left",
+            	"memory",
+                "cpu",
+        	"network",
+        	"battery"
+        ]
+    },
+
+    "group/spotify": {
+        "orientation": "inherit",
+        "drawer": { "transition-duration": 300, "transition-left-to-right": true },
+        "modules": [
+        	"custom/music",
+        	"custom/spotify"
+        ]
+    },
+
+    "group/logout": {
+        "orientation": "inherit",
+        "drawer": { "transition-duration": 300, "transition-left-to-right": true },
+        "modules": [
+        	"custom/arrow-right",
+		"custom/logout"
+        ]
+    },
+
+    "custom/arrow-left":  { "format": "  ", "tooltip": false, "rotate": 90},
+    "custom/music": { "format": "  ", "tooltip": false, "rotate": 90},
+    "custom/arrow-right":  { "format": "  ", "tooltip": false, "rotate": 90},
+
+    "custom/logout": {
+        "format": "󰍃 logout menu",
+	"tooltip": false,
+	"on-click": "wlogout",
+	"rotate": 90
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon}",
+        "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+	"rotate": 90
+    },
+
+    "custom/spotify": {
+        "exec": "/usr/bin/python3 $HOME/hyprdots/waybar/mediaplayer.py --player spotify",
+        "format": "{text}  ",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+	"rotate": 90,
+	"max-length": 75
+    },
+
+    "memory": {
+        "states": {
+            "c": 90, // critical
+            "h": 60, // high
+            "m": 30 // medium
+        },
+        "interval": 10,
+        "format": "󰾆 {percentage}%",
+        "format-m": "󰾅 {percentage}%",
+        "format-h": "󰓅 {percentage}%",
+        "format-c": " {percentage}%",
+        "format-alt": "󰾆 {used}GB",
+        "tooltip": true,
+        "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB",
+	"rotate": 90
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": "󰍛 {usage}%",
+        "format-alt": "{icon0}{icon1}{icon2}{icon3}",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+	"rotate": 90
+    },
+
+    "network": {
+        "tooltip": true,
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈀 ",
+        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+        "format-linked": "󰈀 ",
+        "format-disconnected": "󰖪 ",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+        "interval": 2,
+	"rotate": 90
+    }
+
+}

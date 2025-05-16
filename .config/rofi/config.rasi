@@ -1,0 +1,12 @@
+@import "~/.cache/wal/colors-rofi-dark"
+
+configuration {
+    font: "JetBrainsMono Nerd Font 14";
+    show-icons: true;
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    run-display-format: "{icon} {name}";
+    icon-theme: "Papirus";
+    modi: "drun,run,window";
+    sidebar-mode: true;
+} 
