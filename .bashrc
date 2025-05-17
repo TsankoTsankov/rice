@@ -1,9 +1,13 @@
-#
+#!/usr/bin/env bash
+
 # ~/.bashrc
 #
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+
+fastfetch
 
 # function to open .bashrc with available editor
 # prefered editr = nvim
@@ -30,9 +34,24 @@ edit_bashrc() {
 	fi
 }
 
+### BASIC NAVIGATION ###
+alias ~='cd $HOME'	# navigate to home dir
+alias home='~'		# navigate to home dir
+alias ..='cd ..'	# navigate to previous dir
+alias ...='cd ../,,'	# navigate 2 directories back
+
+alias www='cd $HOME/Documents/www'	# navigate to perosnal web projects dir
+alias notes='cd $HOME/Documents/notes'	# navigate ot the notes dir
+
 ### SYSTEM & CONFIG ALIASES ###
+alias c='clear && fastfetch'	# clear the terminal and run fastfetch
+alias snano='sudo nano'		# super user nano 
+alias svim='sudo nvim'		# super user neovim
 alias ebrc='edit_bashrc'	# open $HOME/.bashrc with default editor
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Documents/dotfiles/ --work-tree=$HOME'	# git bare repo
+
+alias la='ls -Alh'	# for detailed listing
+alias ls='ls -aFh --color=always'	# for colorful and detailed ls
 
 
 ### TOOLS & SCRIPTS ALIASES ###
