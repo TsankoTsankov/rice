@@ -39,6 +39,7 @@ alias ~='cd $HOME'	# navigate to home dir
 alias home='~'		# navigate to home dir
 alias ..='cd ..'	# navigate to previous dir
 alias ...='cd ../,,'	# navigate 2 directories back
+alias config='cd $HOME/.config'     # navigate to the .config folder
 
 alias www='cd $HOME/Documents/www'	# navigate to perosnal web projects dir
 alias notes='cd $HOME/Documents/notes'	# navigate ot the notes dir
@@ -65,4 +66,5 @@ PS1='[\u@\h \W]\$ '
 
 ### STARSHIP ###
 eval "$(starship init bash)"
+
 
