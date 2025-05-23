@@ -64,3 +64,16 @@ true
 true
 0
 #
+^partitionKey=%28https%2Cblackbox.ai%29
+https://www.googletagmanager.com/static/service_worker
+https://www.googletagmanager.com/static/service_worker/55j0/sw.js?origin=https%3A%2F%2Fwww.blackbox.ai
+false
+{9b7f3550-844f-4e0c-98a3-7385b2b21436}
+1
+1748010666246198
+1748010666247430
+1748010666190733
+0
+true
+0
+#

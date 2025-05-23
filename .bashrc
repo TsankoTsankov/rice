@@ -46,9 +46,13 @@ alias notes='cd $HOME/Documents/notes'	# navigate ot the notes dir
 
 ### SYSTEM & CONFIG ALIASES ###
 alias c='clear && fastfetch'	# clear the terminal and run fastfetch
+alias clear='clear && fastfetch'    # clear the terminal and run fastfetch
+bind '"\C-l":"clear\n"'     # When CTRL + L presses -> execute command c (alias above)
 alias snano='sudo nano'		# super user nano 
 alias svim='sudo nvim'		# super user neovim
+
 alias ebrc='edit_bashrc'	# open $HOME/.bashrc with default editor
+alias sbrc='source $HOME/.bashrc'   # source the .bashrc config file
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Documents/dotfiles/ --work-tree=$HOME'	# git bare repo
 
 alias la='ls -Alh'	# for detailed listing
