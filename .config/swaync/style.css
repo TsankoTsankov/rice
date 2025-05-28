@@ -1,0 +1,230 @@
+/* Define colors - directly copied from your Waybar config */
+@define-color bg1 #12121f;
+@define-color bg2 #171728;
+@define-color bg3 #1d1d2f;
+@define-color bg4 #222236;
+@define-color bg5 #29293f;
+@define-color fg #d4d7ff;
+@define-color grey1 #4f5071;
+@define-color grey2 #595b7e;
+@define-color grey3 #63658b;
+@define-color green #7ed7c0;
+@define-color yellow #ecdfac;
+@define-color blue #87bff7;
+@define-color ice #aaecf8;
+@define-color purple #9486e4;
+@define-color red #bd4277;
+@define-color lilac #88a4f7;
+
+/* General styles */
+* {
+    font-family:
+        "ShureTechMonoNF FontAwesome",
+        "Roboto",
+        "Helvetica",
+        "Arial",
+        sans-serif;
+    font-size: 15px;
+    color: @fg; /* Default text color for all elements */
+}
+
+/* --- Notification Window Styles --- */
+#notification-window {
+    background-color: @bg1; /* Darker background for the notification itself */
+    border: 2px solid @bg3; /* Border similar to your Waybar tooltip */
+    border-radius: 5px;
+    margin: 5px; /* Spacing between individual notifications */
+}
+
+#notification-window:hover {
+    background-color: @bg2; /* Slightly lighten on hover for interaction */
+}
+
+#notification-window.critical {
+    background-color: @red; /* Red background for critical notifications */
+    border-color: @red;
+}
+
+#notification-window.low {
+    background-color: @bg1; /* Low urgency can remain default */
+    border-color: @grey1;
+}
+
+#notification-window.normal {
+    background-color: @bg1; /* Normal urgency can remain default */
+    border-color: @blue;
+}
+
+/* --- Notification Elements --- */
+.notification-info {
+    /* Contains icon, summary, body, time */
+    padding: 10px;
+}
+
+.notification-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.notification-title {
+    color: @fg;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.notification-app-name {
+    color: @grey3; /* App name slightly muted */
+    font-size: 14px;
+}
+
+.notification-time {
+    color: @grey2; /* Time text muted */
+    font-size: 13px;
+}
+
+.notification-body {
+    color: @fg;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.notification-actions {
+    margin-top: 10px;
+    padding: 0 10px 10px 10px; /* Padding for buttons */
+}
+
+.notification-action-button {
+    background-color: @bg3;
+    color: @fg;
+    border: 1px solid @grey1;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 2px;
+}
+
+.notification-action-button:hover {
+    background-color: @bg4;
+    border-color: @grey3;
+}
+
+/* --- Control Center Window Styles --- */
+#control-center {
+    background-color: @bg1; /* Similar background to your Waybar modules */
+    border: 2px solid @bg3; /* Border similar to your Waybar tooltip */
+    border-radius: 10px; /* Slightly more rounded than modules */
+    color: @fg;
+}
+
+/* --- Control Center Widgets --- */
+#control-center-title {
+    background-color: @bg2; /* Slightly lighter background for title bar */
+    padding: 10px;
+    border-top-left-radius: 8px; /* Match parent border-radius-2px */
+    border-top-right-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px solid @bg4; /* Subtle separator */
+    color: @fg;
+}
+
+#control-center-clear-all-button {
+    background-color: @red; /* Red for clear all button */
+    color: @fg;
+    border-radius: 5px;
+    padding: 3px 8px;
+}
+
+#control-center-clear-all-button:hover {
+    background-color: lighten(@red, 10%); /* Lighter red on hover */
+}
+
+#control-center-dnd {
+    background-color: @bg2;
+    padding: 10px;
+    margin-top: 5px; /* Spacing below title */
+    border-radius: 5px;
+}
+
+#control-center-dnd-button {
+    background-color: @blue; /* Blue for DND toggle */
+    color: @fg;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+#control-center-dnd-button.disabled {
+    background-color: @grey1; /* Muted color when disabled */
+}
+
+#control-center-dnd-button:hover {
+    background-color: lighten(@blue, 10%);
+}
+
+#control-center-label {
+    background-color: @bg2;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: @fg;
+}
+
+/* --- MPRIS Widget --- */
+#widget-mpris {
+    background-color: @bg2;
+    border-radius: 12px; /* Matches your config.json */
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#widget-mpris-art {
+    border-radius: 12px; /* Ensure album art is rounded */
+}
+
+#widget-mpris-title {
+    font-weight: bold;
+    color: @fg;
+}
+
+#widget-mpris-artist {
+    color: @grey2;
+}
+
+#widget-mpris-controls button {
+    background-color: @bg3;
+    color: @fg;
+    border-radius: 5px;
+    padding: 5px 8px;
+    margin: 2px;
+}
+
+#widget-mpris-controls button:hover {
+    background-color: @bg4;
+}
+
+/* --- Buttons Grid Widget (for audio controls, network, etc.) --- */
+#widget-buttons-grid {
+    background-color: @bg2;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+#widget-buttons-grid button {
+    background-color: @bg3;
+    color: @fg;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px; /* Larger icons for buttons */
+    margin: 5px; /* Spacing between buttons */
+}
+
+#widget-buttons-grid button:hover {
+    background-color: @bg4;
+}
+
+/* --- Notifications List --- */
+#notification-list {
+    margin-top: 10px;
+    /* No background here, as individual notifications have their own */
+}
