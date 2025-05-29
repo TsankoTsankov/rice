@@ -19,7 +19,10 @@ map("n", "<leader>a", ":lua require('harpoon.mark').add_file()<CR>", { desc = "H
 map("n", "<leader>h", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", { desc = "Harpoon menu" })
 
 -- Markdown Preview
-map("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
+--map("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
+--map("n", "<leader>mp", "Toggle Markdown Inline" ":lua require('render-markdown').toggle()")
+map("n", "<leader>mp", ":lua require('render-markdown').toggle()<CR>", { desc = "Toggle Markdown Inline" })
+
 
 -- Vimtex
 map("n", "<leader>lv", ":VimtexView<CR>", { desc = "Vimtex View PDF" })
