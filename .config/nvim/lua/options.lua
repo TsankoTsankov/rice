@@ -16,3 +16,5 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes" 
+vim.opt.background = 'dark'
+vim.cmd('highlight Normal guibg=NONE')
