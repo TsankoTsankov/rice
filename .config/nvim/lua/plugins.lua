@@ -48,7 +48,15 @@ require("lazy").setup({
   "hrsh7th/cmp-nvim-lsp",
   "L3MON4D3/LuaSnip",
   -- Markdown preview
-  { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = { "markdown" } },
+  { "MeanderingProgrammer/render-markdown.nvim", 
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  ft = { "markdown" },
+  config = function()
+    require("render-markdown").setup({
+      render_inline = true,
+    })
+  end,
+},
   -- LaTeX
   "lervag/vimtex",
   -- Git

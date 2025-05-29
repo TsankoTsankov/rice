@@ -37,7 +37,7 @@ GDK_BACKEND=$BACKEND yad \
 "leader a" "Add file to Harpoon" ":lua require('harpoon.mark').add_file()" \
 "leader h" "Harpoon menu" ":lua require('harpoon.ui').toggle_quick_menu()" \
 "" "" "" \
-"leader mp" "Markdown Preview" ":MarkdownPreview" \
+"leader mp" "In-line Markdown Preview" "render-markdown" \
 "" "" "" \
 "leader lv" "View LaTeX PDF" ":VimtexView" \
 "" "" "" \

@@ -48,8 +48,8 @@ alias www='cd $HOME/Documents/www'	# navigate to perosnal web projects dir
 alias notes='cd $HOME/Documents/notes'	# navigate ot the notes dir
 
 ### SYSTEM & CONFIG ALIASES ###
-alias c='clear && fastfetch'	# clear the terminal and run fastfetch
 alias clear='clear && fastfetch'    # clear the terminal and run fastfetch
+alias c='clear'	# clear the terminal and run fastfetch
 bind '"\C-l":"clear\n"'     # When CTRL + L presses -> execute command c (alias above)
 alias snano='sudo nano'		# super user nano 
 alias svim='sudo nvim'		# super user neovim
