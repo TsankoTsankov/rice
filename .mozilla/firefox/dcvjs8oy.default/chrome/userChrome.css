@@ -1,0 +1,110 @@
+/* use variables when about:config variable userChrome.theme-material is true */
+@media -moz-pref("userChrome.theme-material") {
+  /* light mode variables */
+  :root {
+    --md-sys-color-primary: rgba(65 95 145 0.8);
+    --md-sys-color-surface-tint: rgba(65 95 145 0.8);
+    --md-sys-color-on-primary: rgba(255 255 255 0.8);
+    --md-sys-color-primary-container: rgba(214 227 255 0.8);
+    --md-sys-color-on-primary-container: rgba(0 27 62 0.8);
+    --md-sys-color-secondary: rgba(86 95 113 0.8);
+    --md-sys-color-on-secondary: rgba(255 255 255 0.8);
+    --md-sys-color-secondary-container: rgba(218 226 249 0.8);
+    --md-sys-color-on-secondary-container: rgba(19 28 43 0.8);
+    --md-sys-color-tertiary: rgba(112 85 117 0.8);
+    --md-sys-color-on-tertiary: rgba(255 255 255 0.8);
+    --md-sys-color-tertiary-container: rgba(250 216 253 0.8);
+    --md-sys-color-on-tertiary-container: rgba(40 19 46 0.8);
+    --md-sys-color-error: rgba(186 26 26 0.8);
+    --md-sys-color-on-error: rgba(255 255 255 0.8);
+    --md-sys-color-error-container: rgba(255 218 214 0.8);
+    --md-sys-color-on-error-container: rgba(65 0 2 0.8);
+    --md-sys-color-background: rgba(249 249 255 0.8);
+    --md-sys-color-on-background: rgba(25 28 32 0.8);
+    --md-sys-color-surface: rgba(249 249 255 0.8);
+    --md-sys-color-on-surface: rgba(25 28 32 0.8);
+    --md-sys-color-surface-variant: rgba(224 226 236 0.8);
+    --md-sys-color-on-surface-variant: rgba(68 71 78 0.8);
+    --md-sys-color-outline: rgba(116 119 127 0.8);
+    --md-sys-color-outline-variant: rgba(196 198 208 0.8);
+    --md-sys-color-shadow: rgba(0 0 0 0.8);
+    --md-sys-color-scrim: rgba(0 0 0 0.8);
+    --md-sys-color-inverse-surface: rgba(46 48 54 0.8);
+    --md-sys-color-inverse-on-surface: rgba(240 240 247 0.8);
+    --md-sys-color-inverse-primary: rgba(170 199 255 0.8);
+    --md-sys-color-primary-fixed: rgba(214 227 255 0.8);
+    --md-sys-color-on-primary-fixed: rgba(0 27 62 0.8);
+    --md-sys-color-primary-fixed-dim: rgba(170 199 255 0.8);
+    --md-sys-color-on-primary-fixed-variant: rgba(40 71 119 0.8);
+    --md-sys-color-secondary-fixed: rgba(218 226 249 0.8);
+    --md-sys-color-on-secondary-fixed: rgba(19 28 43 0.8);
+    --md-sys-color-secondary-fixed-dim: rgba(190 198 220 0.8);
+    --md-sys-color-on-secondary-fixed-variant: rgba(62 71 89 0.8);
+    --md-sys-color-tertiary-fixed: rgba(250 216 253 0.8);
+    --md-sys-color-on-tertiary-fixed: rgba(40 19 46 0.8);
+    --md-sys-color-tertiary-fixed-dim: rgba(221 188 224 0.8);
+    --md-sys-color-on-tertiary-fixed-variant: rgba(87 62 92 0.8);
+    --md-sys-color-surface-dim: rgba(217 217 224 0.8);
+    --md-sys-color-surface-bright: rgba(249 249 255 0.8);
+    --md-sys-color-surface-container-lowest: rgba(255 255 255 0.8);
+    --md-sys-color-surface-container-low: rgba(243 243 250 0.8);
+    --md-sys-color-surface-container: rgba(237 237 244 0.8);
+    --md-sys-color-surface-container-high: rgba(231 232 238 0.8);
+    --md-sys-color-surface-container-highest: rgba(226 226 233 0.8);
+  }
+
+  /* dark mode variables */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --md-sys-color-primary: rgba(170 199 255 0.8);
+      --md-sys-color-surface-tint: rgba(170 199 255 0.8);
+      --md-sys-color-on-primary: rgba(10 48 95 0.8);
+      --md-sys-color-primary-container: rgba(40 71 119 0.8);
+      --md-sys-color-on-primary-container: rgba(214 227 255 0.8);
+      --md-sys-color-secondary: rgba(190 198 220 0.8);
+      --md-sys-color-on-secondary: rgba(40 49 65 0.8);
+      --md-sys-color-secondary-container: rgba(62 71 89 0.8);
+      --md-sys-color-on-secondary-container: rgba(218 226 249 0.8);
+      --md-sys-color-tertiary: rgba(221 188 224 0.8);
+      --md-sys-color-on-tertiary: rgba(63 40 68 0.8);
+      --md-sys-color-tertiary-container: rgba(87 62 92 0.8);
+      --md-sys-color-on-tertiary-container: rgba(250 216 253 0.8);
+      --md-sys-color-error: rgba(255 180 171 0.8);
+      --md-sys-color-on-error: rgba(105 0 5 0.8);
+      --md-sys-color-error-container: rgba(147 0 10 0.8);
+      --md-sys-color-on-error-container: rgba(255 218 214 0.8);
+      --md-sys-color-background: rgba(17 19 24 0.8);
+      --md-sys-color-on-background: rgba(226 226 233 0.8);
+      --md-sys-color-surface: rgba(17 19 24 0.8);
+      --md-sys-color-on-surface: rgba(226 226 233 0.8);
+      --md-sys-color-surface-variant: rgba(68 71 78 0.8);
+      --md-sys-color-on-surface-variant: rgba(196 198 208 0.8);
+      --md-sys-color-outline: rgba(142 144 153 0.8);
+      --md-sys-color-outline-variant: rgba(68 71 78 0.8);
+      --md-sys-color-shadow: rgba(0 0 0 0.8);
+      --md-sys-color-scrim: rgba(0 0 0 0.8);
+      --md-sys-color-inverse-surface: rgba(226 226 233 0.8);
+      --md-sys-color-inverse-on-surface: rgba(46 48 54 0.8);
+      --md-sys-color-inverse-primary: rgba(65 95 145 0.8);
+      --md-sys-color-primary-fixed: rgba(214 227 255 0.8);
+      --md-sys-color-on-primary-fixed: rgba(0 27 62 0.8);
+      --md-sys-color-primary-fixed-dim: rgba(170 199 255 0.8);
+      --md-sys-color-on-primary-fixed-variant: rgba(40 71 119 0.8);
+      --md-sys-color-secondary-fixed: rgba(218 226 249 0.8);
+      --md-sys-color-on-secondary-fixed: rgba(19 28 43 0.8);
+      --md-sys-color-secondary-fixed-dim: rgba(190 198 220 0.8);
+      --md-sys-color-on-secondary-fixed-variant: rgba(62 71 89 0.8);
+      --md-sys-color-tertiary-fixed: rgba(250 216 253 0.8);
+      --md-sys-color-on-tertiary-fixed: rgba(40 19 46 0.8);
+      --md-sys-color-tertiary-fixed-dim: rgba(221 188 224 0.8);
+      --md-sys-color-on-tertiary-fixed-variant: rgba(87 62 92 0.8);
+      --md-sys-color-surface-dim: rgba(17 19 24 0.8);
+      --md-sys-color-surface-bright: rgba(55 57 62 0.8);
+      --md-sys-color-surface-container-lowest: rgba(12 14 19 0.8);
+      --md-sys-color-surface-container-low: rgba(25 28 32 0.8);
+      --md-sys-color-surface-container: rgba(29 32 36 0.8);
+      --md-sys-color-surface-container-high: rgba(40 42 47 0.8);
+      --md-sys-color-surface-container-highest: rgba(51 53 58 0.8);
+    }
+  }
+}
