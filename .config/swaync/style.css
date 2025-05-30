@@ -1,20 +1,24 @@
 /* Define colors - directly copied from your Waybar config */
-@define-color bg1 #12121f;
-@define-color bg2 #171728;
-@define-color bg3 #1d1d2f;
-@define-color bg4 #222236;
-@define-color bg5 #29293f;
-@define-color fg #d4d7ff;
-@define-color grey1 #4f5071;
-@define-color grey2 #595b7e;
-@define-color grey3 #63658b;
-@define-color green #7ed7c0;
-@define-color yellow #ecdfac;
-@define-color blue #87bff7;
-@define-color ice #aaecf8;
-@define-color purple #9486e4;
-@define-color red #bd4277;
-@define-color lilac #88a4f7;
+/* Monokai Blocky Theme Colors */
+@define-color bg1 #272822;
+@define-color bg2 #2c2d23;
+@define-color bg3 #33342a;
+@define-color bg4 #3a3b31;
+@define-color bg5 #414339;
+@define-color fg #f8f8f2;
+
+@define-color grey1 #75715e;
+@define-color grey2 #8f8b75;
+@define-color grey3 #a9a582;
+
+@define-color green #a6e22e;
+@define-color yellow #e6db74;
+@define-color blue #66d9ef;
+@define-color ice #a1efe4;
+@define-color purple #ae81ff;
+@define-color red #f92672;
+@define-color lilac #cfc3ff;
+
 
 /* General styles */
 * {
@@ -135,7 +139,7 @@
 }
 
 #control-center-clear-all-button:hover {
-    background-color: lighten(@red, 10%); /* Lighter red on hover */
+    background-color: rgba(249, 38, 114, 0.9); /* Lighter red on hover */
 }
 
 #control-center-dnd {
@@ -157,7 +161,7 @@
 }
 
 #control-center-dnd-button:hover {
-    background-color: lighten(@blue, 10%);
+    background-color: rgba(102, 217, 239,0.9);
 }
 
 #control-center-label {

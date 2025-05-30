@@ -1,71 +1,62 @@
-format = """
-[](#3B4252)\
-$python\
-$username\
-[](bg:#434C5E fg:#3B4252)\
-$directory\
-[](fg:#434C5E bg:#4C566A)\
-$git_branch\
-$git_status\
-[](fg:#4C566A bg:#86BBD8)\
-$haskell\
-$java\
-$nodejs\
-$nim\
-$rust\
-[](fg:#86BBD8 bg:#06969A)\
-[](fg:#06969A bg:#33658A)\
-$time\
-[ ](fg:#33658A)\
-"""
-command_timeout = 5000
+# --- Monokai Theme Colors (for reference) ---
+# Background: #272822
+# Foreground (text): #F8F8F2
+# Green:      #A6E22E
+# Pink/Red:   #F92672
+# Orange:     #FD971F
+# Blue:       #66D9EF
+# Yellow:     #E6DB74
+# Gray:       #75715E
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"$schema" = 'https://starship.rs/config-schema.json'
 
+add_newline = true
+
+format = """$time $all"""
+
+# Git Branch
 [git_branch]
-symbol = ""
-style = "bg:#4C566A"
-format = '[ $symbol $branch ]($style)'
+symbol = " "
+truncation_length = 4
+truncation_symbol = ""
+format = "[](fg:#F8F8F2 bg:none)[](fg:#272822 bg:#F8F8F2)[](fg:#F8F8F2 bg:#A6E22E)[ $branch]($style)[](fg:#A6E22E bg:none) "
+style = "fg:#272822 bg:#A6E22E"
 
+# Git Commit
+[git_commit]
+commit_hash_length = 4
+tag_symbol = " "
+format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
+style = "fg:#A6E22E"
+
+# Git Status
 [git_status]
-style = "bg:#4C566A"
-format = '[$all_status$ahead_behind ]($style)'
-
-[haskell]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nim]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[python]
-style = "bg:#3B4252"
-format = '[(\($virtualenv\) )]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[time]
+format = """[](fg:#F8F8F2 bg:none)[](fg:#272822 bg:#F8F8F2)[](fg:#F8F8F2 bg:#66D9EF)\
+[ $up_to_date$conflicted$untracked$modified$staged$renamed$ahead$behind$diverged ](fg:#272822 bg:#66D9EF)[](fg:#66D9EF bg:none)"""
+conflicted = " conflict "
+ahead = " ahead "
+behind = " behind "
+diverged = " diverged "
+up_to_date = " OK "
+untracked = " untracked "
+stashed = " stash "
+modified = " modified "
+staged = " staged "
+renamed = " renamed "
+deleted = " deleted "
+style = "fg:#F92672"
 disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
-format = '[ $time ]($style)'
+
+# Directory
+[directory]
+format = "[](fg:#F8F8F2 bg:none)[](fg:#272822 bg:#F8F8F2)[](fg:#F8F8F2 bg:#FD971F)[ $path]($style)[](fg:#FD971F bg:none) "
+style = "fg:#272822 bg:#FD971F"
+truncation_length = 3
+truncate_to_repo = false
+home_symbol = ""
+
+# Command Duration
+[cmd_duration]
+min_time = 1000
+format="[](fg:#F8F8F2 bg:none)[](fg:#272822 bg:#F8F8F2)[](fg:#F8F8F2 bg:#FD971F)[ took $duration](fg:#F8F8F2 bg:#FD971F)[](fg:#FD971F bg:none)"
+
