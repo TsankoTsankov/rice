@@ -67,24 +67,24 @@ Things break. And I break things.
 
 ✅ TO DO:
 
-    - [ ] Tweak NeoVim setup
+- [ ] Tweak NeoVim setup
 
-    - [ ] .bashrc clean up 
+- [ ] .bashrc clean up 
 
-    - [ ] SDDM theme
+- [ ] SDDM theme
 
-    - [ ] Rofi is RAW af right now
+- [ ] Rofi is RAW af right now
 
-    - [ ] SwayNC style
+- [ ] SwayNC style
 
-    - [ ] Maintenance scripts
+- [ ] Maintenance scripts
 
-    - [ ] Upkeep tasks and other misc things to do
+- [ ] Upkeep tasks and other misc things to do
 
-    - [ ] Screenshots / GIFs in README.md
+- [ ] Screenshots / GIFs in README.md
 
-    - [ ] List of Tools – Add a section like “🔧 Tools Used” (Neovim, swww, Waybar, Rofi, etc.).
+- [ ] List of Tools – Add a section like “🔧 Tools Used” (Neovim, swww, Waybar, Rofi, etc.).
 
-    - [ ] Inspirations – Credit people who made this setup possible.
+- [ ] Inspirations – Credit people who made this setup possible.
 
 License – Use it however you want. I don't care enough to make it a problem ;)
