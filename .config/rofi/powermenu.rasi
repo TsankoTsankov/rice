@@ -1,0 +1,156 @@
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                    true; /* Enable icon display */
+}
+
+/*****----- Global Properties -----*****/
+* {
+    /* Monokai Color Palette */
+    monokai-bg1:                   #272822; /* Base dark background */
+    monokai-bg2:                   #2c2d23; /* Slightly lighter background */
+    monokai-bg3:                   #33342a; /* Even lighter background, good for selection */
+    monokai-fg:                    #f8f8f2; /* Main Foreground */
+    monokai-grey1:                 #75715e; /* Comments/inactive text */
+    monokai-blue:                  #66d9ef; /* Accent Blue */
+    monokai-purple:                #ae81ff; /* Accent Purple (for selected) */
+
+    /* Theme Colors (derived from Monokai) */
+    background-window:             #27282299; /* bg1 with ~60% opacity */
+    background-normal:             #2728221A; /* bg1 with 10% opacity for normal elements */
+    background-selected:           #33342a70; /* bg3 with 70% opacity */
+    foreground-normal:             @monokai-fg;
+    foreground-selected:           @monokai-purple;
+    prompt-color:                  @monokai-blue;
+
+    /* Dimensions (scaled for 2K resolution, adjust as needed) */
+    mainbox-spacing:               67px;
+    mainbox-margin:                0px 625px;
+    message-padding:               20px;
+    message-border-radius:         100%;
+    listview-spacing:              33px;
+    element-padding:               60px 53px;
+    element-border-radius:         100%;
+
+    /* Fonts (FiraCode Nerd Font) */
+    prompt-font:                   "FiraCode Nerd Font Bold 43";
+    textbox-font:                  "FiraCode Nerd Font 16";
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                  "real";
+    location:                      center;
+    anchor:                        center;
+    fullscreen:                    true;
+    cursor:                        "default";
+    background-color:              @background-window;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                       true;
+    spacing:                       @mainbox-spacing;
+    margin:                        @mainbox-margin;
+    background-color:              transparent;
+    children:                      [ "dummy", "inputbar", "listview", "message", "dummy" ];
+}
+
+/*****----- Inputbar (for User Display) -----*****/
+inputbar {
+    enabled:                       true;
+    background-color:              transparent;
+    children:                      [ "prompt" ];
+    horizontal-align:              0.5; /* Center the prompt */
+    padding:                       0 0 20px 0; /* Add padding below the username */
+}
+
+prompt {
+    enabled:                       true;
+    font:                          @prompt-font;
+    background-color:              transparent;
+    text-color:                    @prompt-color;
+    str:                           "User"; /* Hardcoded: Change this if you want a different static text */
+}
+
+dummy {
+    background-color:              transparent;
+}
+
+/*****----- Message -----*****/
+message {
+    enabled:                       true;
+    margin:                        0px 466px; /* Example margin, adjust as needed */
+    padding:                       @message-padding;
+    border-radius:                 @message-border-radius;
+    background-color:              @background-normal;
+    text-color:                    @prompt-color;
+}
+textbox {
+    font:                          @textbox-font;
+    background-color:              transparent;
+    text-color:                    inherit;
+    vertical-align:                0.5;
+    horizontal-align:              0.5;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                       true;
+    expand:                        false;
+    columns:                       5; /* Display 5 items horizontally */
+    lines:                         1; /* In a single row */
+    cycle:                         true;
+    dynamic:                       true;
+    scrollbar:                     false;
+    layout:                        horizontal; /* IMPORTANT: Changed to horizontal for a single row of buttons */
+    reverse:                       false;
+    fixed-height:                  true;
+    fixed-columns:                 true;
+
+    spacing:                       @listview-spacing;
+    background-color:              transparent;
+    cursor:                        "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                       true;
+    padding:                       @element-padding;
+    border-radius:                 @element-border-radius;
+    background-color:              @background-normal;
+    text-color:                    @foreground-normal;
+    cursor:                        pointer;
+    orientation:                   vertical; /* Stack icon above text */
+    vertical-align:                0.5; /* Center content vertically within element */
+    horizontal-align:              0.5; /* Center content horizontally within element */
+}
+
+element normal.normal {
+    background-color:              @background-normal;
+    text-color:                    @foreground-normal;
+}
+element selected.normal {
+    background-color:              @background-selected;
+    text-color:                    @foreground-selected;
+}
+
+element-icon {
+    enabled:                       true;
+    font:                          "FiraCode Nerd Font 64"; /* Explicitly set font and size for icon glyphs */
+    background-color:              transparent;
+    text-color:                    inherit; /* Inherit color from parent element */
+    vertical-align:                0.5;
+    horizontal-align:              0.5;
+    margin-bottom:                 10px; /* Small margin to separate icon from text */
+}
+
+element-text {
+    enabled:                       true;
+    font:                          "FiraCode Nerd Font 28"; /* Smaller font size for text labels */
+    background-color:              transparent;
+    text-color:                    inherit;
+    cursor:                        inherit;
+    vertical-align:                0.5;
+    horizontal-align:              0.5;
+}
+

@@ -1,64 +1,120 @@
-//@import "~/.config/rofi/config.rasi" 
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ *
+ * Rofi Wallpaper Select Configuration
+ *
+ * Adapted for Monokai theme, FiraCode Nerd Font, and 2K resolution (2560x1440)
+ * All values hardcoded for maximum compatibility.
+ *
+ * NEW: Non-selected elements have NO background, only selected element has a background.
+ **/
 
-configuration{
-    modi: "drun";  
-    show-icons: true;
+configuration {
+    modi: "drun";
+    show-icons: true; /* Keeping true as you intend to show icons/thumbnails */
+}
+
+/*****----- Global Properties for Styling (no variables here, just comments for reference) -----*****/
+* {
+    /* Monokai Color Palette Reference:
+     * bg1:   #272822
+     * bg2:   #2c2d23
+     * bg3:   #33342a
+     * fg:    #f8f8f2
+     * grey1: #75715e
+     * blue:  #66d9ef
+     * purple: #ae81ff
+     */
+
+    /* Sizing & Spacing Reference (Scaled for 2K):
+     * border-radius:         12px
+     * element-padding-scaled: 7px
+     * listview-spacing-scaled: 13px
+     * entry-padding-scaled:  7px
+     * entry-margin-scaled:   7px
+     * font:                  "FiraCode Nerd Font 16"
+     */
 }
 
 window {
-    width: 75%;
-    height: inherit;
+    width:                         75%;
+    height:                        inherit; /* Keeps height dynamic based on content */
+    transparency:                  "real";
+    location:                      center;
+    anchor:                        center;
+    background-color:              #27282299; /* Monokai bg1 with transparency (General menu style) */
+    border:                        2px;
+    border-color:                  #66d9ef; /* Monokai blue */
+    border-radius:                 12px;
+    padding:                       20px; /* Internal padding for the window */
 }
 
-/* ---- Mainbox ---- */
+/* --- Mainbox --- */
 mainbox {
-    children: [ "inputbar", "listview" ];
+    children:                      [ "inputbar", "listview" ];
+    spacing:                       15px; /* Spacing between inputbar and listview */
+    background-color:              transparent;
 }
 
-entry { 
-    expand: true;
-    placeholder: " 🎞️ Search / Choose Wallpaper";
-    horizontal-align: 0.5;
-    padding: 5px;
-    margin: 5px;
+inputbar {
+    background-color:              #2c2d23; /* Monokai bg2 */
+    border-radius:                 12px;
+    padding:                       15px; /* Internal padding for inputbar */
+    children:                      [ "entry" ]; /* Only entry, no prompt/colon needed for a clean search bar */
 }
 
-/* ---- Listview ---- */
+entry {
+    expand:                        true;
+    placeholder:                   "Choose Wallpaper";
+    horizontal-align:              0.5;
+    padding:                       7px; /* From entry-padding-scaled */
+    margin:                        7px; /* From entry-margin-scaled */
+    //background-color:              transparent;
+    text-color:                    #f8f8f2; /* Monokai fg */
+    placeholder-color:             #75715e; /* Monokai grey1 */
+    font:                          "FiraCode Nerd Font 18"; /* Slightly larger font for entry */
+}
+
+/* --- Listview --- */
 listview {
-    columns: 6;
-    lines: 3; 
-    spacing: 10px;  
-    padding: 10px;
-    flow: horizontal;
-    fixed-width: true;  
-    fixed-height: true;
-    cycle: true;
-    scrollbar: false; 
+    columns:                       6;
+    lines:                         3;
+    spacing:                       13px; /* From listview-spacing-scaled */
+    padding:                       13px; /* From listview-spacing-scaled */
+    flow:                          horizontal;
+    fixed-width:                   true;
+    fixed-height:                  true;
+    cycle:                         true;
+    scrollbar:                     false;
+    background-color:              transparent;
 }
 
-/* ---- Element ---- */
+/* --- Element (Non-selected items - NO background) --- */
 element {
-    orientation: horizontal; 
-    padding: 5px; 
-    spacing: 5px; 
-    border-radius: 10px;
+    orientation:                   horizontal;
+    padding:                       7px; /* From element-padding-scaled */
+    spacing:                       7px; /* From element-padding-scaled */
+    border-radius:                 12px; /* From border-radius */
+    //background-color:              transparent; /* Changed to fully transparent */
+    text-color:                    #f8f8f2; /* Monokai fg (text on image might need adjusting, or remove text) */
 }
 
+/* --- Element Selected (Selected item - Whitish background) --- */
 element selected.normal {
-    background-color: #555555;
-    text-color: #FFFFFF;
-}
-
-element-icon {
-    size: 0px; 
-    horizontal-align: 0.5;
-    vertical-align: 0.5;
-    margin: 0px; 
+    //background-color:              #E0E0E0EE; /* Light grey, ~93% opaque for "whitish" background */
+    text-color:                    #272822;   /* Monokai bg1 for dark text on light background */
+    border:                        2px;        /* Add a border for extra emphasis */
+    border-color:                  #66d9ef;   /* Monokai blue border */
 }
 
 element-text {
-    vertical-align: 0.5;
-    horizontal-align: 0.5;
-    padding: 6px;
-    margin: 0px; 
+    vertical-align:                0.5;
+    horizontal-align:              0.5;
+    padding:                       6px; /* Keeping original padding, adjust if needed */
+    margin:                        0px;
+    font:                          "FiraCode Nerd Font 14"; /* Smaller font for element text/labels */
+    text-color:                    inherit; /* Inherits from element (normal/selected) */
+    background-color:              transparent;
 }
