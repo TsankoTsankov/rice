@@ -1,0 +1,348 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ *
+ * Configuration For Rofi Version: 1.7.3
+ *
+ * Adapted for Monokai theme, FiraCode Nerd Font, and 2K resolution (2560x1440)
+ **/
+
+configuration {
+    modi: "drun,run,filebrowser,window";
+    case-sensitive: false;
+    cycle: true;
+    filter: "";
+    scroll-method: 0;
+    normalize-match: true;
+    show-icons: true; /* Keeping true as per your updated config.rasi */
+    icon-theme: "Papirus"; /* Keeping Papirus as per your original config */
+    steal-focus: false;
+
+    matching: "normal";
+    tokenize: true;
+
+    ssh-client: "ssh";
+    ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
+    parse-hosts: true;
+    parse-known-hosts: true;
+
+    drun-categories: "";
+    drun-match-fields: "name,generic,exec,categories,keywords";
+    drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+    drun-show-actions: false;
+    drun-url-launcher: "xdg-open";
+    drun-use-desktop-cache: false;
+    drun-reload-desktop-cache: false;
+    drun {
+        parse-user:    true;
+        parse-system: true;
+    }
+
+    run-command: "{cmd}";
+    run-list-command: "";
+    run-shell-command: "{terminal} -e {cmd}";
+
+    run,drun {
+        fallback-icon: "application-x-addon";
+    }
+
+    window-match-fields: "title,class,role,name,desktop";
+    window-command: "wmctrl -i -R {window}";
+    window-format: "{w} - {c} - {t:0}";
+    window-thumbnail: false;
+
+    disable-history: false;
+    sorting-method: "normal";
+    max-history-size: 25;
+
+    display-window: "Windows";
+    display-windowcd: "Window CD";
+    display-run: "Run";
+    display-ssh: "SSH"; /* SSH is still present in your modi */
+    display-drun: "Apps";
+    display-combi: "Combi";
+    display-keys: "Keys";
+    display-filebrowser: "Files";
+
+    terminal: "rofi-sensible-terminal";
+    font: "FiraCode Nerd Font 16"; /* Scaled 12pt for 2K resolution (12 * 1.33 = ~16) */
+    sort: false;
+    threads: 0;
+    click-to-exit: true;
+
+    filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+    }
+
+    timeout {
+      action: "kb-cancel";
+      delay:   0;
+    }
+}
+
+
+/*****----- Global Properties for Styling -----*****/
+* {
+    /* Monokai Color Palette (hardcoded for direct use) */
+    /* Primary Backgrounds */
+    monokai-bg1:                   #272822; /* Base dark background */
+    monokai-bg2:                   #2c2d23; /* Slightly lighter background */
+    monokai-bg3:                   #33342a; /* Even lighter background, good for selection */
+    monokai-bg4:                   #3a3b31;
+    monokai-bg5:                   #414339;
+
+    /* Main Foreground */
+    monokai-fg:                    #f8f8f2;
+
+    /* Accent Colors */
+    monokai-grey1:                 #75715e; /* Comments/inactive text */
+    monokai-grey2:                 #8f8b75;
+    monokai-grey3:                 #a9a582;
+    monokai-green:                 #a6e22e;
+    monokai-yellow:                #e6db74;
+    monokai-blue:                  #66d9ef;
+    monokai-ice:                   #a1efe4;
+    monokai-purple:                #ae81ff; /* Good for selected text/highlights */
+    monokai-red:                   #f92672; /* Errors/strong highlights */
+    monokai-lilac:                 #cfc3ff;
+
+    /* Derived Theme Colors */
+    selected-normal-background:    #33342a70; /* monokai-bg3 with 70% opacity */
+    selected-normal-foreground:    #ae81ff;   /* monokai-purple */
+    normal-background:             #2728221A; /* monokai-bg1 with 10% opacity */
+    normal-foreground:             #f8f8f2;   /* monokai-fg */
+    alternate-normal-background:   #27282226; /* monokai-bg1 with 15% opacity (slightly different from normal-bg) */
+    alternate-normal-foreground:   #f8f8f2;   /* monokai-fg */
+
+    active-background:             #a6e22e70; /* monokai-green with 70% opacity */
+    active-foreground:             #f8f8f2;   /* monokai-fg */
+    urgent-background:             #f9267270; /* monokai-red with 70% opacity */
+    urgent-foreground:             #f8f8f2;   /* monokai-fg */
+
+    // Inactive elements (e.g., placeholder text, disabled states)
+    // You might want to use a grey for these
+    inactive-background:           #27282200; /* Fully transparent */
+    inactive-foreground:           #75715e;   /* monokai-grey1 */
+
+    // Inputbar/Prompt colors
+    inputbar-background:           #2c2d23; /* monokai-bg2 for input bar */
+    prompt-foreground:             #66d9ef; /* monokai-blue for prompt symbol */
+
+    // Border colors
+    border-color:                  #66d9ef; /* monokai-blue */
+    separator-color:               #75715e; /* monokai-grey1 */
+
+    // Sizing & Spacing (Scaled for 2K)
+    border-radius:                 12px;       /* 9px * 1.33 */
+    inputbar-padding:              20px;       /* 15px * 1.33 */
+    prompt-padding:                10px 15px;  /* 8px 12px * 1.33 */
+    entry-padding:                 10px 15px;  /* 8px 12px * 1.33 */
+    element-padding:               16px 20px;  /* 12px 15px * 1.33 */
+    listview-spacing:              12px;       /* 9px * 1.33 */
+    scrollbar-width:               8px;        /* 6px * 1.33 */
+    window-padding:                15px;       /* 11px * 1.33 */
+    mainbox-padding:               15px;       /* 11px * 1.33 */
+
+    // Font Sizing (already defined in configuration, but reiterating for clarity/consistency)
+    font:                          "FiraCode Nerd Font 16";
+    element-icon-size:             32px;       /* 24px * 1.33 */
+    element-text-size:             16px;       /* 12px * 1.33 */
+}
+
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                  "real";
+    location:                      center;
+    anchor:                        center;
+    width:                         600px; /* Adjust as needed for your preference, scaled from ~450px */
+    x-offset:                      0;
+    y-offset:                      0;
+    margin:                        0;
+    padding:                       var(window-padding);
+    background-color:              #27282299; /* monokai-bg1 with transparency */
+    border:                        2px;
+    border-color:                  #66d9ef; /* monokai-blue */
+    border-radius:                 var(border-radius);
+    cursor:                        "default";
+}
+
+/*****----- Mainbox -----*****/
+mainbox {
+    enabled:                       true;
+    children:                      [ "inputbar", "listview" ];
+    spacing:                       var(listview-spacing); /* Spacing between inputbar and listview */
+    padding:                       var(mainbox-padding);
+    background-color:              transparent;
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                       true;
+    spacing:                       0;
+    padding:                       var(inputbar-padding);
+    background-color:              #2c2d23; /* monokai-bg2 */
+    border:                        0;
+    border-radius:                 var(border-radius);
+    children:                      [ "prompt", "textbox-prompt-colon", "entry", "num-input", "case-indicator" ];
+}
+
+prompt {
+    enabled:                       true;
+    background-color:              transparent;
+    text-color:                    #66d9ef; /* monokai-blue */
+    font:                          "FiraCode Nerd Font Bold 18"; /* Slightly larger prompt font */
+    padding:                       var(prompt-padding);
+}
+
+textbox-prompt-colon {
+    enabled:                       true;
+    expand:                        false;
+    str:                           ":";
+    background-color:              transparent;
+    text-color:                    #66d9ef; /* monokai-blue */
+    padding:                       0px 0px 0px 5px; /* Small gap between prompt and colon */
+}
+
+entry {
+    enabled:                       true;
+    expand:                        true;
+    padding:                       var(entry-padding);
+    background-color:              transparent;
+    text-color:                    #f8f8f2; /* monokai-fg */
+    cursor:                        text;
+    placeholder:                   "Search...";
+    placeholder-color:             #75715e; /* monokai-grey1 */
+}
+
+num-input {
+    enabled:                       true;
+    background-color:              transparent;
+    text-color:                    #f8f8f2; /* monokai-fg */
+    font:                          "FiraCode Nerd Font 14";
+    padding:                       var(entry-padding);
+}
+
+case-indicator {
+    enabled:                       true;
+    background-color:              transparent;
+    text-color:                    #f8f8f2; /* monokai-fg */
+    font:                          "FiraCode Nerd Font 14";
+    padding:                       var(entry-padding);
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                       true;
+    columns:                       1;
+    lines:                         8; /* Max 8 lines visible at once */
+    cycle:                         true;
+    dynamic:                       true;
+    scrollbar:                     true; /* Show scrollbar for long lists */
+    layout:                        vertical;
+    reverse:                       false;
+    fixed-height:                  true;
+    fixed-columns:                 true;
+    spacing:                       var(listview-spacing);
+    background-color:              transparent;
+    cursor:                        "default";
+}
+
+scrollbar {
+    enabled:                       true;
+    width:                         var(scrollbar-width);
+    padding:                       0;
+    handle-width:                  8px; /* Same as scrollbar-width */
+    handle-color:                  #75715e; /* monokai-grey1 */
+    border-radius:                 var(border-radius);
+    background-color:              transparent;
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                       true;
+    padding:                       var(element-padding);
+    background-color:              #2728221A; /* normal-background */
+    text-color:                    #f8f8f2; /* normal-foreground */
+    border-radius:                 var(border-radius);
+    cursor:                        pointer;
+}
+element normal.normal {
+    background-color:              #2728221A; /* normal-background */
+    text-color:                    #f8f8f2;   /* normal-foreground */
+}
+element selected.normal {
+    background-color:              #33342a70; /* selected-normal-background */
+    text-color:                    #ae81ff;   /* selected-normal-foreground */
+}
+element alternate.normal {
+    background-color:              #27282226; /* alternate-normal-background */
+    text-color:                    #f8f8f2;   /* alternate-normal-foreground */
+}
+element urgent.normal {
+    background-color:              #f9267270; /* urgent-background */
+    text-color:                    #f8f8f2;   /* urgent-foreground */
+}
+element active.normal {
+    background-color:              #a6e22e70; /* active-background */
+    text-color:                    #f8f8f2;   /* active-foreground */
+}
+
+element-icon {
+    enabled:                       true;
+    size:                          var(element-icon-size);
+    background-color:              transparent;
+    text-color:                    inherit; /* Inherit color from parent element */
+}
+
+element-text {
+    enabled:                       true;
+    font:                          var(font); /* Uses the main font variable */
+    background-color:              transparent;
+    text-color:                    inherit; /* Inherit color from parent element */
+    vertical-align:                0.5;
+    horizontal-align:              0.0; /* Align text to the left */
+}
+
+/*****----- Message (for errors/information) -----*****/
+message {
+    enabled:                       true;
+    margin:                        10px 0px 0px 0px; /* Spacing below listview */
+    padding:                       15px;
+    border-radius:                 var(border-radius);
+    background-color:              #2c2d23; /* monokai-bg2 */
+    text-color:                    #f92672; /* monokai-red for messages/errors */
+    border:                        1px;
+    border-color:                  #f92672;
+}
+textbox {
+    background-color:              transparent;
+    text-color:                    inherit;
+    vertical-align:                0.5;
+    horizontal-align:              0.5;
+}
+
+/*****----- Mode Switcher (if you were to use it) -----*****/
+/* This section is commented out as it's not typically used in a simple launcher.
+   Uncomment and style if you enable a mode switcher in your Rofi setup. */
+/*
+mode-switcher {
+    enabled:                       true;
+    spacing:                       10px;
+    background-color:              transparent;
+    padding:                       0;
+}
+button {
+    text-color:                    var(normal-foreground);
+    background-color:              var(normal-background);
+    padding:                       10px 15px;
+    border-radius:                 var(border-radius);
+    cursor:                        pointer;
+}
+button selected {
+    background-color:              var(selected-normal-background);
+    text-color:                    var(selected-normal-foreground);
+}
+*/

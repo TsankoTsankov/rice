@@ -1,0 +1,63 @@
+
+configuration{
+    modi: "drun";  
+    show-icons: true;
+}
+
+window {
+    width: 75%;
+    height: inherit;
+}
+
+/* ---- Mainbox ---- */
+mainbox {
+    children: [ "inputbar", "listview" ];
+}
+
+entry { 
+    expand: true;
+    placeholder: " 🎞️ Search / Choose Wallpaper";
+    horizontal-align: 0.5;
+    padding: 5px;
+    margin: 5px;
+}
+
+/* ---- Listview ---- */
+listview {
+    columns: 6;
+    lines: 3; 
+    spacing: 10px;  
+    padding: 10px;
+    flow: horizontal;
+    fixed-width: true;  
+    fixed-height: true;
+    cycle: true;
+    scrollbar: false; 
+}
+
+/* ---- Element ---- */
+element {
+    orientation: horizontal; 
+    padding: 5px; 
+    spacing: 5px; 
+    border-radius: 10px;
+}
+
+element selected.normal {
+    background-color: #555555;
+    text-color: #FFFFFF;
+}
+
+element-icon {
+    size: 0px; 
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    margin: 0px; 
+}
+
+element-text {
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    padding: 6px;
+    margin: 0px; 
+}
