@@ -72,7 +72,7 @@
             "enabled": false
         },
         "BetterFolders": {
-            "enabled": false,
+            "enabled": true,
             "sidebar": true,
             "sidebarAnim": true,
             "closeAllFolders": false,
@@ -578,6 +578,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1748792249378
+        "settingsSyncVersion": 1748792902132
     }
 }
