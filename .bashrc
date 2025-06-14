@@ -31,7 +31,7 @@ export HISTTIMEFORMAT="%F %T "
 # echo "data" > existing.txt Fails with noclobber on
 # echo "data" >| existing.txt Overwrites
 set -o noclobber        
-set -o vi
+#set -o vi
 
 
 # ====================
